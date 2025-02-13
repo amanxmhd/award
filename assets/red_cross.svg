@@ -1,0 +1,23 @@
+<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 16099">
+<g id="Group 16087">
+<path id="Ellipse 156" d="M6.17749 12.144C9.41663 12.144 12.0425 9.51819 12.0425 6.27905C12.0425 3.03991 9.41663 0.414062 6.17749 0.414062C2.93834 0.414062 0.3125 3.03991 0.3125 6.27905C0.3125 9.51819 2.93834 12.144 6.17749 12.144Z" fill="url(#paint0_radial_1_1227)"/>
+<path id="Ellipse 161" d="M6.17996 11.1638C8.87951 11.1638 11.0679 8.9758 11.0679 6.27678C11.0679 3.57776 8.87951 1.38977 6.17996 1.38977C3.48041 1.38977 1.29199 3.57776 1.29199 6.27678C1.29199 8.9758 3.48041 11.1638 6.17996 11.1638Z" fill="url(#paint1_linear_1_1227)"/>
+</g>
+<g id="Group 16088">
+<path id="Path 16939" d="M4.34949 4.51227L7.88451 8.04758" stroke="#E9E9E9" stroke-linecap="round"/>
+<path id="Path 16940" d="M7.88451 4.51227L4.34949 8.04758" stroke="#E9E9E9" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_1_1227" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.17749 6.27905) scale(5.86499)">
+<stop stop-color="#0C1113"/>
+<stop offset="0.046" stop-color="#42555A"/>
+<stop offset="1" stop-color="#050809"/>
+</radialGradient>
+<linearGradient id="paint1_linear_1_1227" x1="1.29199" y1="1.38977" x2="11.066" y2="11.1657" gradientUnits="userSpaceOnUse">
+<stop stop-color="#DE2234"/>
+<stop offset="1" stop-color="#BB0130"/>
+</linearGradient>
+</defs>
+</svg>
