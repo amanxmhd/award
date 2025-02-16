@@ -25,7 +25,8 @@ class AwardPage extends StatelessWidget {
                     'assets/centre_profile.svg', // Replace with your SVG file path
                     width: 120, // Reduced size of SVG
                     height: 120, // Reduced size of SVG
-                    fit: BoxFit.scaleDown, // Ensure it fits within the bounds of the hexagon
+                    fit: BoxFit
+                        .scaleDown, // Ensure it fits within the bounds of the hexagon
                   ),
                 ),
               ),
@@ -53,7 +54,8 @@ class AwardPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 10), // Add spacing between hexagon and bottom container
+            const SizedBox(
+                height: 10), // Add spacing between hexagon and bottom container
 
             // Bottom Container with custom shape
             CustomPaint(
@@ -67,8 +69,6 @@ class AwardPage extends StatelessWidget {
   }
 }
 
-
-
 // CustomPainter for Hexagon
 class HexagonPainter extends CustomPainter {
   @override
@@ -79,15 +79,18 @@ class HexagonPainter extends CustomPainter {
       ..strokeWidth = 1; // Border width
 
     // Draw inner hexagon
-    Path innerHexagonPath = _drawHexagon(size.width, size.height, size.width / 2, size.height / 2);
+    Path innerHexagonPath =
+        _drawHexagon(size.width, size.height, size.width / 2, size.height / 2);
     canvas.drawPath(innerHexagonPath, borderPaint);
 
     // Draw outer hexagon (scaled out by a factor of 1.3)
-    Path outerHexagonPath = _drawHexagon(size.width * 1.3, size.height * 1.3, size.width / 2, size.height / 2);
+    Path outerHexagonPath = _drawHexagon(
+        size.width * 1.3, size.height * 1.3, size.width / 2, size.height / 2);
     canvas.drawPath(outerHexagonPath, borderPaint);
   }
 
-  Path _drawHexagon(double width, double height, double centerX, double centerY) {
+  Path _drawHexagon(
+      double width, double height, double centerX, double centerY) {
     Path path = Path();
 
     // Calculate the points for the hexagon
@@ -190,13 +193,14 @@ class BottomShapePainter extends CustomPainter {
     // First line
     canvas.drawLine(
       Offset(lineStartX, size.height), // Start point
-      Offset(lineEndX, size.height),   // End point
+      Offset(lineEndX, size.height), // End point
       linePaint,
     );
 
     // Second line slightly below the first
     double lineOffset = 22.0; // Vertical spacing between the two lines
-    double reducedLineEndX = size.width * 0.7; // Reduce the length of the second line (adjust as needed)
+    double reducedLineEndX = size.width *
+        0.7; // Reduce the length of the second line (adjust as needed)
   }
 
   @override

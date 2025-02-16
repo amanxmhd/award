@@ -1,9 +1,10 @@
 import 'package:award/Frames/profile_frame.dart';
 import 'package:award/Pages/allocated_award.dart';
 import 'package:award/Pages/tournament_page.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../DropDown/appdropdown.dart';
+import '../PopUp/add_members_dialog.dart';
 
 class UpdateAward extends StatefulWidget {
   const UpdateAward({super.key});
@@ -65,7 +66,8 @@ class _UpdateAwardState extends State<UpdateAward> {
                         ),
                         actions: [
                           Padding(
-                            padding: const EdgeInsets.only(right: 20.0, top: 27),
+                            padding:
+                                const EdgeInsets.only(right: 20.0, top: 27),
                             child: SvgPicture.asset(
                               'assets/delete.svg',
                               height: 50,
@@ -83,8 +85,11 @@ class _UpdateAwardState extends State<UpdateAward> {
                             Navigator.push(
                               context,
                               PageRouteBuilder(
-                                pageBuilder: (context, animation, secondaryAnimation) => TournamentPage(),
-                                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        TournamentPage(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
                                   // Fade transition
                                   return FadeTransition(
                                     opacity: animation,
@@ -104,7 +109,6 @@ class _UpdateAwardState extends State<UpdateAward> {
                           ),
                         ),
                       ),
-
                       Positioned(
                         top: 30,
                         right: 70,
@@ -113,14 +117,20 @@ class _UpdateAwardState extends State<UpdateAward> {
                             Navigator.push(
                               context,
                               PageRouteBuilder(
-                                pageBuilder: (context, animation, secondaryAnimation) => AllocatedAward(),
-                                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        AllocatedAward(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
                                   // Slide transition from the bottom
-                                  const begin = Offset(0.0, 1.0); // Start off-screen (bottom)
-                                  const end = Offset.zero; // End at the original position
+                                  const begin = Offset(
+                                      0.0, 1.0); // Start off-screen (bottom)
+                                  const end = Offset
+                                      .zero; // End at the original position
                                   const curve = Curves.easeInOut;
 
-                                  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
                                   var offsetAnimation = animation.drive(tween);
 
                                   return SlideTransition(
@@ -141,8 +151,6 @@ class _UpdateAwardState extends State<UpdateAward> {
                           ),
                         ),
                       )
-
-
                     ],
                   ),
                 ),
@@ -155,47 +163,35 @@ class _UpdateAwardState extends State<UpdateAward> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Row with the red bar and "AWARD NAME"
-                  RedBar(heading: 'AWARD NAME',),
+                  RedBar(
+                    heading: 'AWARD NAME',
+                  ),
 
-                  SizedBox(height: 26),
+                  SizedBox(height: 6),
 
-                  SizedBox(
-                    height: 55,
-                    width: 500,
-                    child: ListWheelScrollView.useDelegate(
-                      itemExtent: 70,
-                      physics: FixedExtentScrollPhysics(),
-                      onSelectedItemChanged: (index) {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      },
-                      childDelegate: ListWheelChildBuilderDelegate(
-                        childCount: ['OPTION 1', 'OPTION 2', 'OPTION 3', 'CUSTOM'].length,
-                        builder: (context, index) {
-                          return Container(
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: _currentIndex == index ? Color(0xFFC1192E) : Color(0xFF212121),
-                              borderRadius: BorderRadius.zero,
-                            ),
-                            child: Text(
-                              ['OPTION 1', 'OPTION 2', 'OPTION 3', 'CUSTOM'][index],
-                              style: TextStyle(
-                                color: _currentIndex == index ? Colors.white : Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          );
+                  Container(
+                    child: AppDropDown(
+                      attributes: AppDropDownAttributes(
+                        optionsList: [
+                          'OPTION 1',
+                          'OPTION 2',
+                          'OPTION 3',
+                          'CUSTOM'
+                        ],
+                        selectedIndex: 0,
+                        showDropDown: true,
+                        toggleDropDown: () {},
+                        height: 100,
+                        width: 500,
+                        updateSelectedIndex: (val) {
+                          print(
+                              "Selected Index: $val"); // Handle selection update here
                         },
                       ),
                     ),
                   ),
 
-                  SizedBox(height: 10),
-
-
-
+                  SizedBox(height: 6),
 
                   TextField(
                     decoration: InputDecoration(
@@ -207,25 +203,31 @@ class _UpdateAwardState extends State<UpdateAward> {
                       fillColor: Colors.black, // Box color
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xFF868686)),
-                        borderRadius: BorderRadius.zero, // No rounding, sharp corners
+                        borderRadius:
+                            BorderRadius.zero, // No rounding, sharp corners
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xFF868686)),
-                        borderRadius: BorderRadius.zero, // No rounding, sharp corners
+                        borderRadius:
+                            BorderRadius.zero, // No rounding, sharp corners
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xFFC1192E)),
-                        borderRadius: BorderRadius.zero, // No rounding, sharp corners
+                        borderRadius:
+                            BorderRadius.zero, // No rounding, sharp corners
                       ),
                     ),
-                    style: TextStyle(color: Color(0xFFFFFFFF)), // Ensure text input color matches
+                    style: TextStyle(
+                        color: Color(
+                            0xFFFFFFFF)), // Ensure text input color matches
                   ),
-
 
                   SizedBox(height: 26),
                   // Award Description Section
 
-                  RedBar(heading: 'AWARD DESCRIPTION',),
+                  RedBar(
+                    heading: 'AWARD DESCRIPTION',
+                  ),
 
                   SizedBox(height: 26),
                   Container(
@@ -256,27 +258,37 @@ class _UpdateAwardState extends State<UpdateAward> {
                   ),
 
                   SizedBox(height: 26),
-                  RedBar(heading: 'AWARD WINNERS',),
+                  RedBar(
+                    heading: 'AWARD WINNERS',
+                  ),
                   SizedBox(height: 20),
                   PlusRed(),
                   SizedBox(height: 26),
 
-                  ProfileImageRow(count: 4,),
+                  ProfileImageRow(
+                    count: 4,
+                  ),
 
                   SizedBox(height: 20),
-                  RedBar(heading: 'AWARD SPONSORS',),
+                  RedBar(
+                    heading: 'AWARD SPONSORS',
+                  ),
                   SizedBox(height: 20),
                   PlusRed(),
                   SizedBox(height: 26),
 
-                  RedBar(heading: 'AWARD ORGANIZERS',),
+                  RedBar(
+                    heading: 'AWARD ORGANIZERS',
+                  ),
 
                   SizedBox(height: 20),
                   PlusRed(),
                   SizedBox(height: 26),
                   ProfileImageRow(count: 2),
                   SizedBox(height: 20),
-                  RedBar(heading: 'WINNING AMOUNT',),
+                  RedBar(
+                    heading: 'WINNING AMOUNT',
+                  ),
 
                   SizedBox(height: 26),
                   Row(
@@ -298,17 +310,17 @@ class _UpdateAwardState extends State<UpdateAward> {
                             border: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF868686)),
                               borderRadius:
-                              BorderRadius.zero, // Ensures sharp edges
+                                  BorderRadius.zero, // Ensures sharp edges
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF3A3939)),
                               borderRadius:
-                              BorderRadius.zero, // Ensures sharp edges
+                                  BorderRadius.zero, // Ensures sharp edges
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                               borderRadius:
-                              BorderRadius.zero, // Ensures sharp edges
+                                  BorderRadius.zero, // Ensures sharp edges
                             ),
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 16),
@@ -330,7 +342,7 @@ class _UpdateAwardState extends State<UpdateAward> {
                                 shape: BoxShape.rectangle,
                                 border: Border.all(
                                     color:
-                                    Colors.grey), // Fixed border property
+                                        Colors.grey), // Fixed border property
                               ),
                               child: Center(
                                 child: Text(
@@ -370,14 +382,16 @@ class _UpdateAwardState extends State<UpdateAward> {
                             padding: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
-                              border: Border.all(color: const Color(0xff9cb4c6)),
+                              border:
+                                  Border.all(color: const Color(0xff9cb4c6)),
                             ),
                             child: Container(
                               width: double.infinity,
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                 color: const Color(0xffde2234),
-                                border: Border.all(color: const Color(0xff090909), width: 3),
+                                border: Border.all(
+                                    color: const Color(0xff090909), width: 3),
                               ),
                               child: const Text(
                                 "UPDATE",
@@ -395,7 +409,6 @@ class _UpdateAwardState extends State<UpdateAward> {
                       ],
                     ),
                   )
-
                 ],
               ),
             ),
@@ -410,7 +423,8 @@ class _UpdateAwardState extends State<UpdateAward> {
 class ProfileImageRow extends StatefulWidget {
   final int count;
   const ProfileImageRow({
-    super.key, required this.count,
+    super.key,
+    required this.count,
   });
 
   @override
@@ -424,9 +438,11 @@ class _ProfileImageRowState extends State<ProfileImageRow> {
   void initState() {
     super.initState();
     iconList = [];
-    iconList = List.generate(widget.count, (_) => ProfileWithRedCross(
-      onPressed: removeProfile,
-    ));
+    iconList = List.generate(
+        widget.count,
+        (_) => ProfileWithRedCross(
+              onPressed: removeProfile,
+            ));
   }
 
   void removeProfile() {
@@ -450,13 +466,9 @@ class _ProfileImageRowState extends State<ProfileImageRow> {
   }
 }
 
-
 class RedBar extends StatelessWidget {
   final String heading;
-  const RedBar({
-    super.key,
-    required this.heading
-  });
+  const RedBar({super.key, required this.heading});
 
   @override
   Widget build(BuildContext context) {
@@ -519,24 +531,44 @@ class PlusRed extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.zero, // Sharp corners
               ),
-              contentPadding: EdgeInsets.symmetric(
-                  horizontal: 12, vertical: 15),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             ),
           ),
         ),
 
         SizedBox(width: 5),
 
-        Container(
-          height: 54,
-          width: 56,
-          decoration: BoxDecoration(
-            color: Color(0xffd51933),
-          ),
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 36,
+        InkWell(
+          onTap: () {
+            showDialog(
+              context: context,
+              barrierColor: Colors.black.withOpacity(1), // Dark background
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Colors.black,
+                  contentPadding: EdgeInsets.zero,
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 6),
+                  content: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.73,
+                    child: AddMembersDialog(),
+                  ),
+                );
+              },
+            );
+          },
+          child: Container(
+            height: 54,
+            width: 56,
+            decoration: const BoxDecoration(
+              color: Color(0xffd51933),
+            ),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 36,
+            ),
           ),
         ),
       ],

@@ -27,7 +27,8 @@ class AwardFrame extends StatelessWidget {
             // Center SVG Image (Main Logo)
             Positioned(
               top: 100,
-              left: (screenWidth - 450) / 2 + 125, // Center aligned within SizedBox
+              left: (screenWidth - 450) / 2 +
+                  125, // Center aligned within SizedBox
               child: SvgPicture.asset(
                 'assets/frame1.svg',
                 width: 200,

@@ -128,7 +128,7 @@ class _UnallocatedAwardState extends State<UnallocatedAward> {
                   borderRadius: BorderRadius.zero,
                 ),
                 contentPadding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 17),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 17),
               ),
             ),
           ),

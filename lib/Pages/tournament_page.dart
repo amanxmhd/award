@@ -52,14 +52,20 @@ class _TournamentPageState extends State<TournamentPage> {
                           Navigator.push(
                             context,
                             PageRouteBuilder(
-                              pageBuilder: (context, animation, secondaryAnimation) => UpdateAward(),
-                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      UpdateAward(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
                                 // Slide transition from left
-                                const begin = Offset(-1.0, 0.0); // Start off-screen (left)
-                                const end = Offset.zero; // End at the original position
+                                const begin = Offset(
+                                    -1.0, 0.0); // Start off-screen (left)
+                                const end =
+                                    Offset.zero; // End at the original position
                                 const curve = Curves.easeInOut;
 
-                                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                                var tween = Tween(begin: begin, end: end)
+                                    .chain(CurveTween(curve: curve));
                                 var offsetAnimation = animation.drive(tween);
 
                                 return SlideTransition(
@@ -85,13 +91,19 @@ class _TournamentPageState extends State<TournamentPage> {
                           Navigator.push(
                             context,
                             PageRouteBuilder(
-                              pageBuilder: (context, animation, secondaryAnimation) => UpdateAward(),
-                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                const begin = Offset(0.0, 1.0); // Start off-screen (bottom)
-                                const end = Offset.zero; // End at the original position
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      UpdateAward(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                const begin = Offset(
+                                    0.0, 1.0); // Start off-screen (bottom)
+                                const end =
+                                    Offset.zero; // End at the original position
                                 const curve = Curves.easeInOut;
 
-                                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                                var tween = Tween(begin: begin, end: end)
+                                    .chain(CurveTween(curve: curve));
                                 var offsetAnimation = animation.drive(tween);
 
                                 return SlideTransition(
@@ -161,27 +173,44 @@ class _TournamentPageState extends State<TournamentPage> {
               ),
             ),
 
-
             Stack(
-              children:
-              [
-                HexagonPage(),
-                Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 355,top: 25),
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/share.svg', // Replace with your actual SVG file path
-                      width: 65,  // Adjust width as needed
-                      height: 65, // Adjust height as needed
-                      fit: BoxFit.cover, // Adjust fit if needed
-                    ),
-                  ],
-                ),
-              ),
-              ]
-            ),
+              children: [
+                HexagonPage(), // Base Hexagon Page
 
+                Positioned(
+                  left: 10.0,
+                  top: 25.0,
+                  child: SvgPicture.asset(
+                    'assets/share.svg',
+                    width: 65,
+                    height: 65,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+
+                Positioned(
+                  right: 10.0,
+                  top: 25.0,
+                  child: SvgPicture.asset(
+                    'assets/Edit.svg',
+                    width: 65,
+                    height: 65,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+
+                Positioned(
+                  top: 43,
+                  right: 32,
+                  child: SvgPicture.asset(
+                    'assets/pencil.svg',
+                    width: 55,
+                    height: 23,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
 
             Padding(
               padding: const EdgeInsets.only(top: 38.0),
@@ -210,7 +239,9 @@ class _TournamentPageState extends State<TournamentPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20), // Space between the award name and the lorem ipsum text
+                  SizedBox(
+                      height:
+                          20), // Space between the award name and the lorem ipsum text
                   Align(
                     alignment: Alignment.centerLeft, // Align text to the left
                     child: Text(
@@ -221,8 +252,11 @@ class _TournamentPageState extends State<TournamentPage> {
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
                       ),
-                      maxLines: isExpanded ? null : 2, // Show all lines if expanded
-                      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis, // Add ellipsis for overflow
+                      maxLines:
+                          isExpanded ? null : 2, // Show all lines if expanded
+                      overflow: isExpanded
+                          ? TextOverflow.visible
+                          : TextOverflow.ellipsis, // Add ellipsis for overflow
                     ),
                   )
                 ],
@@ -273,154 +307,194 @@ class _TournamentPageState extends State<TournamentPage> {
 
             SizedBox(height: 26),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                CommonStatCard(
-                  value: "224",
-                  label: "TOTAL KILLS",
-                  assetPath: 'assets/kills_under.svg',
-                ),
-                CommonStatCard(
-                  value: "4th",
-                  label: "POSITION",
-                  assetPath: 'assets/kills_under.svg',
-                  topLabelPosition: 70,
-                ),
-                CommonStatCard(
-                  value: "224",
-                  label: "TOTAL KILLS",
-                  assetPath: 'assets/kills_under.svg',
-                ),
-              ],
-            ),
-
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: const [
+            //     CommonStatCard(
+            //       value: "224",
+            //       label: "TOTAL KILLS",
+            //       assetPath: 'assets/kills_under.svg',
+            //     ),
+            //     CommonStatCard(
+            //       value: "4th",
+            //       label: "POSITION",
+            //       assetPath: 'assets/kills_under.svg',
+            //       topLabelPosition: 70,
+            //     ),
+            //     CommonStatCard(
+            //       value: "224",
+            //       label: "TOTAL KILLS",
+            //       assetPath: 'assets/kills_under.svg',
+            //     ),
+            //   ],
+            // ),
 
             SizedBox(height: 40),
-
-
+            Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Row(
+                children: [
+                  // Red bar SVG at the start
+                  SvgPicture.asset(
+                    'assets/red_bar.svg',
+                    width: 8,
+                    height: 40,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(width: 12),
+                  Text(
+                    "MEMBERS",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      letterSpacing: 1.28,
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
             Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedOption = 'Winner';
-                  });
-                },
-                child: Column(
-                  children: [
-                    AnimatedDefaultTextStyle(
-                      duration: Duration(milliseconds: 300),
-                      style: TextStyle(
-                        color: selectedOption == 'Winner' ? Colors.white : Color(0xFFC5D1D8),
-                        fontSize: selectedOption == 'Winner' ? 18 : 15,
-                        fontFamily: 'Jost',
-                        fontWeight: selectedOption == 'Winner' ? FontWeight.w500 : FontWeight.w300,
-                      ),
-                      child: Text('Winner'),
+              padding: const EdgeInsets.only(top: 20.0, left: 90),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedOption = 'Winner';
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        AnimatedDefaultTextStyle(
+                          duration: Duration(milliseconds: 300),
+                          style: TextStyle(
+                            color: selectedOption == 'Winner'
+                                ? Colors.white
+                                : Color(0xFFC5D1D8),
+                            fontSize: selectedOption == 'Winner' ? 18 : 15,
+                            fontFamily: 'Jost',
+                            fontWeight: selectedOption == 'Winner'
+                                ? FontWeight.w500
+                                : FontWeight.w300,
+                          ),
+                          child: Text('Winner'),
+                        ),
+                        AnimatedSwitcher(
+                          duration: Duration(milliseconds: 300),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return ScaleTransition(
+                                scale: animation, child: child);
+                          },
+                          child: selectedOption == 'Winner'
+                              ? SvgPicture.asset(
+                                  'assets/down_block.svg',
+                                  width: 80,
+                                  height: 5,
+                                  fit: BoxFit.cover,
+                                  key: ValueKey('WinnerSVG'),
+                                )
+                              : SizedBox.shrink(),
+                        ),
+                      ],
                     ),
-                    AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(scale: animation, child: child);
-                      },
-                      child: selectedOption == 'Winner'
-                          ? SvgPicture.asset(
-                        'assets/down_block.svg',
-                        width: 80,
-                        height: 5,
-                        fit: BoxFit.cover,
-                        key: ValueKey('WinnerSVG'),
-                      )
-                          : SizedBox.shrink(),
+                  ),
+                  SizedBox(width: 30),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedOption = 'Organizer';
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        AnimatedDefaultTextStyle(
+                          duration: Duration(milliseconds: 300),
+                          style: TextStyle(
+                            color: selectedOption == 'Organizer'
+                                ? Colors.white
+                                : Color(0xFFC5D1D8),
+                            fontSize: selectedOption == 'Organizer' ? 18 : 15,
+                            fontFamily: 'Jost',
+                            fontWeight: selectedOption == 'Organizer'
+                                ? FontWeight.w500
+                                : FontWeight.w300,
+                          ),
+                          child: Text('Organizers'),
+                        ),
+                        AnimatedSwitcher(
+                          duration: Duration(milliseconds: 100),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return FadeTransition(
+                                opacity: animation, child: child);
+                          },
+                          child: selectedOption == 'Organizer'
+                              ? SvgPicture.asset(
+                                  'assets/down_block.svg',
+                                  width: 80,
+                                  height: 5,
+                                  fit: BoxFit.cover,
+                                  key: ValueKey('OrganizerSVG'),
+                                )
+                              : SizedBox.shrink(),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(width: 30),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedOption = 'Sponsor';
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        AnimatedDefaultTextStyle(
+                          duration: Duration(milliseconds: 300),
+                          style: TextStyle(
+                            color: selectedOption == 'Sponsor'
+                                ? Colors.white
+                                : Color(0xFFC5D1D8),
+                            fontSize: selectedOption == 'Sponsor' ? 20 : 15,
+                            fontFamily: 'Jost',
+                            fontWeight: selectedOption == 'Sponsor'
+                                ? FontWeight.w500
+                                : FontWeight.w300,
+                          ),
+                          child: Text('Sponsor'),
+                        ),
+                        AnimatedSwitcher(
+                          duration: Duration(milliseconds: 100),
+                          transitionBuilder:
+                              (Widget child, Animation<double> animation) {
+                            return ScaleTransition(
+                                scale: animation, child: child);
+                          },
+                          child: selectedOption == 'Sponsor'
+                              ? SvgPicture.asset(
+                                  'assets/down_block.svg',
+                                  width: 80,
+                                  height: 5,
+                                  fit: BoxFit.cover,
+                                  key: ValueKey('SponsorSVG'),
+                                )
+                              : SizedBox.shrink(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(width: 30),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedOption = 'Organizer';
-                  });
-                },
-                child: Column(
-                  children: [
-                    AnimatedDefaultTextStyle(
-                      duration: Duration(milliseconds: 300),
-                      style: TextStyle(
-                        color: selectedOption == 'Organizer' ? Colors.white : Color(0xFFC5D1D8),
-                        fontSize: selectedOption == 'Organizer' ? 18 : 15,
-                        fontFamily: 'Jost',
-                        fontWeight: selectedOption == 'Organizer' ? FontWeight.w500 : FontWeight.w300,
-                      ),
-                      child: Text('Organizers'),
-                    ),
-                    AnimatedSwitcher(
-                      duration: Duration(milliseconds: 100),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                      child: selectedOption == 'Organizer'
-                          ? SvgPicture.asset(
-                        'assets/down_block.svg',
-                        width: 80,
-                        height: 5,
-                        fit: BoxFit.cover,
-                        key: ValueKey('OrganizerSVG'),
-                      )
-                          : SizedBox.shrink(),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(width: 30),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedOption = 'Sponsor';
-                  });
-                },
-                child: Column(
-                  children: [
-                    AnimatedDefaultTextStyle(
-                      duration: Duration(milliseconds: 300),
-                      style: TextStyle(
-                        color: selectedOption == 'Sponsor' ? Colors.white : Color(0xFFC5D1D8),
-                        fontSize: selectedOption == 'Sponsor' ? 20 : 15,
-                        fontFamily: 'Jost',
-                        fontWeight: selectedOption == 'Sponsor' ? FontWeight.w500 : FontWeight.w300,
-                      ),
-                      child: Text('Sponsor'),
-                    ),
-                    AnimatedSwitcher(
-                      duration: Duration(milliseconds: 100),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(scale: animation, child: child);
-                      },
-                      child: selectedOption == 'Sponsor'
-                          ? SvgPicture.asset(
-                        'assets/down_block.svg',
-                        width: 80,
-                        height: 5,
-                        fit: BoxFit.cover,
-                        key: ValueKey('SponsorSVG'),
-                      )
-                          : SizedBox.shrink(),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+            ),
 
             Align(
-              alignment: Alignment.centerLeft, // Aligns the container to the left side
+              alignment:
+                  Alignment.centerLeft, // Aligns the container to the left side
               child: Positioned(
                 child: Container(
                   height: 300,
@@ -527,8 +601,6 @@ class _TournamentPageState extends State<TournamentPage> {
 
             SizedBox(height: 26),
 
-
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -610,14 +682,16 @@ class _TournamentPageState extends State<TournamentPage> {
                               ),
                               // Text positioned above the SVG
                               Positioned(
-                                top: 2, // Adjust the vertical position of the text above the SVG
+                                top:
+                                    2, // Adjust the vertical position of the text above the SVG
                                 left: 11,
                                 child: Text(
                                   "Tournament Name",
                                   style: TextStyle(
                                     fontSize: 8,
                                     fontFamily: 'Jost',
-                                    fontWeight: FontWeight.w500, // Fix FontWeight spelling
+                                    fontWeight: FontWeight
+                                        .w500, // Fix FontWeight spelling
                                     color: Colors.white, // Set the text color
                                   ),
                                 ),
@@ -625,7 +699,6 @@ class _TournamentPageState extends State<TournamentPage> {
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -686,13 +759,15 @@ class _TournamentPageState extends State<TournamentPage> {
                               ),
                               // Text positioned above the SVG
                               Positioned(
-                                top: 3, // Adjust the vertical position of the text above the SVG
+                                top:
+                                    3, // Adjust the vertical position of the text above the SVG
                                 left: 11,
                                 child: Text(
                                   "Tournament Name",
                                   style: TextStyle(
                                     fontSize: 8,
-                                    fontWeight: FontWeight.w500, // Fix FontWeight spelling
+                                    fontWeight: FontWeight
+                                        .w500, // Fix FontWeight spelling
                                     color: Colors.white, // Set the text color
                                   ),
                                 ),
@@ -700,7 +775,6 @@ class _TournamentPageState extends State<TournamentPage> {
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -747,13 +821,16 @@ class _TournamentPageState extends State<TournamentPage> {
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Ensures equal space between rows
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceEvenly, // Ensures equal space between rows
                 children: [
                   // First section with SVG
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0), // Horizontal padding for spacing
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0), // Horizontal padding for spacing
                     child: Stack(
-                      clipBehavior: Clip.none, // Allow the stack to overflow if needed
+                      clipBehavior:
+                          Clip.none, // Allow the stack to overflow if needed
                       children: [
                         // Row with SVG as the background
                         Row(
@@ -785,7 +862,9 @@ class _TournamentPageState extends State<TournamentPage> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 110), // Offset for proper center alignment
+                              padding: EdgeInsets.only(
+                                  left:
+                                      110), // Offset for proper center alignment
                               child: Text(
                                 'PRASAD',
                                 style: TextStyle(
@@ -817,15 +896,13 @@ class _TournamentPageState extends State<TournamentPage> {
                     ),
                   ),
 
-
-
-
-
                   // Second section with SVG
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0), // Horizontal padding for spacing
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0), // Horizontal padding for spacing
                     child: Stack(
-                      clipBehavior: Clip.none, // Allow the stack to overflow if needed
+                      clipBehavior:
+                          Clip.none, // Allow the stack to overflow if needed
                       children: [
                         // Row with SVG (this needs to be behind)
                         Row(
@@ -857,7 +934,8 @@ class _TournamentPageState extends State<TournamentPage> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 110), // Offset for centering
+                              padding: EdgeInsets.only(
+                                  left: 110), // Offset for centering
                               child: Text(
                                 'RAHUL',
                                 style: TextStyle(
@@ -889,12 +967,10 @@ class _TournamentPageState extends State<TournamentPage> {
                     ),
                   ),
 
-
-
-
                   // Third section with SVG
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0), // Horizontal padding for spacing
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0), // Horizontal padding for spacing
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: [
@@ -928,7 +1004,9 @@ class _TournamentPageState extends State<TournamentPage> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 110), // Padding to push "YOU" to the center area
+                              padding: EdgeInsets.only(
+                                  left:
+                                      110), // Padding to push "YOU" to the center area
                               child: Text(
                                 'YOU',
                                 style: TextStyle(
@@ -959,8 +1037,6 @@ class _TournamentPageState extends State<TournamentPage> {
                       ],
                     ),
                   )
-
-
                 ],
               ),
             ),
@@ -971,7 +1047,6 @@ class _TournamentPageState extends State<TournamentPage> {
     );
   }
 }
-
 
 class CommonStatCard extends StatelessWidget {
   final String value;
@@ -1045,7 +1120,6 @@ class CommonStatCard extends StatelessWidget {
   }
 }
 
-
 // Custom clipper for hexagonal bottom corners
 class HexagonalBottomClipper extends CustomClipper<Path> {
   @override
@@ -1054,7 +1128,8 @@ class HexagonalBottomClipper extends CustomClipper<Path> {
 
     path.lineTo(0, 0); // Top left corner
     path.lineTo(size.width, 0); // Top right corner
-    path.lineTo(size.width, size.height - 40); // Move down 40 pixels from the right
+    path.lineTo(
+        size.width, size.height - 40); // Move down 40 pixels from the right
     path.lineTo(size.width - 70, size.height); // Bottom right sharp cut
     path.lineTo(70, size.height); // Bottom left sharp cut
     path.lineTo(0, size.height - 40); // Move up 40 pixels from the left
@@ -1086,17 +1161,18 @@ class HexagonalBorderPainter extends CustomPainter {
       ],
       begin: Alignment.topLeft, // Gradient start point from left
       end: Alignment.topRight, // Gradient end point to right
-
     );
 
     // Apply the gradient to the paint shader
     Paint paint = Paint()
-      ..shader = gradient.createShader(Rect.fromLTWH(0, size.height - 40, size.width, 40))
+      ..shader = gradient
+          .createShader(Rect.fromLTWH(0, size.height - 40, size.width, 40))
       ..strokeWidth = 2 // Adjust the thickness of the line
       ..style = PaintingStyle.stroke;
 
     Path path = Path()
-      ..moveTo(size.width, size.height - 40) // Start at the right bottom sharp cut
+      ..moveTo(
+          size.width, size.height - 40) // Start at the right bottom sharp cut
       ..lineTo(size.width - 70, size.height) // Bottom right sharp cut
       ..lineTo(70, size.height) // Bottom left sharp cut
       ..lineTo(0, size.height - 40); // Move up to the left sharp cut

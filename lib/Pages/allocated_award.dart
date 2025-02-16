@@ -57,7 +57,8 @@ class _AllocatedAwardState extends State<AllocatedAward> {
                 painter: HexagonalBorderPainter(),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 26),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 6.0, vertical: 26),
                 child: Row(
                   children: [
                     Expanded(
@@ -84,7 +85,8 @@ class _AllocatedAwardState extends State<AllocatedAward> {
                             borderSide: BorderSide(color: Colors.white),
                             borderRadius: BorderRadius.zero,
                           ),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 17),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 17),
                         ),
                       ),
                     ),
@@ -129,14 +131,18 @@ class _AllocatedAwardState extends State<AllocatedAward> {
                 Navigator.push(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) => UpdateAward(),
-                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        UpdateAward(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
                       // Slide transition from left
-                      const begin = Offset(-1.0, 0.0); // Start off-screen (left)
+                      const begin =
+                          Offset(-1.0, 0.0); // Start off-screen (left)
                       const end = Offset.zero; // End at the original position
                       const curve = Curves.easeInOut;
 
-                      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                      var tween = Tween(begin: begin, end: end)
+                          .chain(CurveTween(curve: curve));
                       var offsetAnimation = animation.drive(tween);
 
                       return SlideTransition(
@@ -310,4 +316,3 @@ class PopupBar extends StatelessWidget {
     );
   }
 }
-

@@ -1,9 +1,14 @@
+import 'package:award/DropDown/appdropdown.dart';
 import 'package:award/Frames/profile_frame.dart';
-import 'package:award/POPUP/app_dialog_box.dart';
-import 'package:award/POPUP/match_page.dart';
 import 'package:award/Pages/allocated_award.dart';
+import 'package:flutter/rendering.dart' as flutter_rendering;
+import 'package:award/PopUp/add_members_dialog.dart';
+import 'package:award/PopUp/app_dialog.dart';
+import 'package:award/PopUp/add_members_dialog.dart' as popup;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../PopUp/add_members_dialog.dart';
 
 class CreateAward extends StatefulWidget {
   const CreateAward({super.key});
@@ -24,139 +29,132 @@ class _UpdateAwardState extends State<CreateAward> {
           children: [
             // Header container with custom clipper
             ClipPath(
-            clipper: HexagonalBottomClipper(),
-        child: Container(
-          width: double.infinity,
-          height: 125,
-          color: const Color(0xFF050D10),
-          child: CustomPaint(
-            painter: HexagonalBorderPainter(),
-            child: Stack(
-              children: [
-                AppBar(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  centerTitle: true,
-                  title: Padding(
-                    padding: const EdgeInsets.only(top: 38.0),
-                    child: SizedBox(
-                      width: 177,
-                      height: 27,
-                      child: Text(
-                        'CREATE AWARD',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Jost',
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.80,
+              clipper: HexagonalBottomClipper(),
+              child: Container(
+                width: double.infinity,
+                height: 125,
+                color: const Color(0xFF050D10),
+                child: CustomPaint(
+                  painter: HexagonalBorderPainter(),
+                  child: Stack(
+                    children: [
+                      AppBar(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        centerTitle: true,
+                        title: Padding(
+                          padding: const EdgeInsets.only(top: 38.0),
+                          child: SizedBox(
+                            width: 177,
+                            height: 27,
+                            child: Text(
+                              'CREATE AWARD',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontFamily: 'Jost',
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 0.80,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
-                        textAlign: TextAlign.center,
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 10.0, top: 20),
+                          child: Icon(
+                            Icons.arrow_back_ios_new_outlined,
+                            color: Color(0xFFC00530),
+                            size: 24,
+                          ),
+                        ),
+                        actions: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(right: 30.0, top: 27),
+                            child: SvgPicture.asset(
+                              'assets/delete.svg',
+                              height: 50,
+                              width: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
-                  leading: Padding(
-                    padding: const EdgeInsets.only(left: 10.0, top: 20),
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
-                      color: Color(0xFFC00530),
-                      size: 24,
-                    ),
-                  ),
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 30.0, top: 27),
-                      child: SvgPicture.asset(
-                        'assets/delete.svg',
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  top: 26,
-                  right: 85,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => AllocatedAward(),
-                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                            const begin = Offset(0.0, 1.0); // Start off-screen (bottom)
-                            const end = Offset.zero; // End at the original position
-                            const curve = Curves.easeInOut;
+                      Positioned(
+                        top: 26,
+                        right: 85,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        AllocatedAward(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const begin = Offset(
+                                      0.0, 1.0); // Start off-screen (bottom)
+                                  const end = Offset
+                                      .zero; // End at the original position
+                                  const curve = Curves.easeInOut;
 
-                            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                            var offsetAnimation = animation.drive(tween);
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
+                                  var offsetAnimation = animation.drive(tween);
 
-                            return SlideTransition(
-                              position: offsetAnimation,
-                              child: child,
+                                  return SlideTransition(
+                                    position: offsetAnimation,
+                                    child: child,
+                                  );
+                                },
+                              ),
                             );
                           },
+                          child: Text(
+                            "Preview",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                      );
-                    },
-                    child: Text(
-                      "Preview",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
                       ),
-                    ),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 36.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Row with the red bar and "AWARD NAME"
-                  RedBar(heading: 'AWARD NAME',),
+                  RedBar(
+                    heading: 'AWARD NAME',
+                  ),
 
-                  SizedBox(height: 26),
+                  SizedBox(height: 6),
 
-                  SizedBox(
-                    height: 55,
-                    width: 500,
-                    child: ListWheelScrollView.useDelegate(
-                      itemExtent: 70,
-                      physics: FixedExtentScrollPhysics(),
-                      onSelectedItemChanged: (index) {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      },
-                      childDelegate: ListWheelChildBuilderDelegate(
-                        childCount: ['OPTION 1', 'OPTION 2', 'OPTION 3', 'CUSTOM'].length,
-                        builder: (context, index) {
-                          return Container(
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: _currentIndex == index ? Color(0xFFC1192E) : Color(0xFF212121),
-                              borderRadius: BorderRadius.zero,
-                            ),
-                            child: Text(
-                              ['OPTION 1', 'OPTION 2', 'OPTION 3', 'CUSTOM'][index],
-                              style: TextStyle(
-                                color: _currentIndex == index ? Colors.white : Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                  Container(
+                    child: AppDropDown(
+                        attributes: AppDropDownAttributes(
+                            optionsList: [
+                          'OPTION 1',
+                          'OPTION 2',
+                          'OPTION 3',
+                          'CUSTOM'
+                        ],
+                            selectedIndex: 0,
+                            showDropDown: true,
+                            toggleDropDown: () {},
+                            height: 100,
+                            width: 500,
+                            updateSelectedIndex: (val) {})),
                   ),
 
                   SizedBox(height: 10),
@@ -171,25 +169,31 @@ class _UpdateAwardState extends State<CreateAward> {
                       fillColor: Colors.black, // Box color
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xFF868686)),
-                        borderRadius: BorderRadius.zero, // No rounding, sharp corners
+                        borderRadius:
+                            BorderRadius.zero, // No rounding, sharp corners
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xFF868686)),
-                        borderRadius: BorderRadius.zero, // No rounding, sharp corners
+                        borderRadius:
+                            BorderRadius.zero, // No rounding, sharp corners
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xFFC1192E)),
-                        borderRadius: BorderRadius.zero, // No rounding, sharp corners
+                        borderRadius:
+                            BorderRadius.zero, // No rounding, sharp corners
                       ),
                     ),
-                    style: TextStyle(color: Color(0xFFFFFFFF)), // Ensure text input color matches
+                    style: TextStyle(
+                        color: Color(
+                            0xFFFFFFFF)), // Ensure text input color matches
                   ),
-
 
                   SizedBox(height: 26),
                   // Award Description Section
 
-                  RedBar(heading: 'AWARD DESCRIPTION',),
+                  RedBar(
+                    heading: 'AWARD DESCRIPTION',
+                  ),
 
                   SizedBox(height: 26),
                   Container(
@@ -220,27 +224,37 @@ class _UpdateAwardState extends State<CreateAward> {
                   ),
 
                   SizedBox(height: 26),
-                  RedBar(heading: 'AWARD WINNERS',),
+                  RedBar(
+                    heading: 'AWARD WINNERS',
+                  ),
                   SizedBox(height: 20),
                   PlusRed(),
                   SizedBox(height: 26),
 
-                  ProfileImageRow(count: 4,),
+                  ProfileImageRow(
+                    count: 4,
+                  ),
 
                   SizedBox(height: 20),
-                  RedBar(heading: 'AWARD SPONSORS',),
+                  RedBar(
+                    heading: 'AWARD SPONSORS',
+                  ),
                   SizedBox(height: 20),
                   PlusRed(),
                   SizedBox(height: 26),
 
-                  RedBar(heading: 'AWARD ORGANIZERS',),
+                  RedBar(
+                    heading: 'AWARD ORGANIZERS',
+                  ),
 
                   SizedBox(height: 20),
                   PlusRed(),
                   SizedBox(height: 26),
                   ProfileImageRow(count: 2),
                   SizedBox(height: 20),
-                  RedBar(heading: 'WINNING AMOUNT',),
+                  RedBar(
+                    heading: 'WINNING AMOUNT',
+                  ),
 
                   SizedBox(height: 26),
                   Row(
@@ -262,17 +276,17 @@ class _UpdateAwardState extends State<CreateAward> {
                             border: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF868686)),
                               borderRadius:
-                              BorderRadius.zero, // Ensures sharp edges
+                                  BorderRadius.zero, // Ensures sharp edges
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF3A3939)),
                               borderRadius:
-                              BorderRadius.zero, // Ensures sharp edges
+                                  BorderRadius.zero, // Ensures sharp edges
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                               borderRadius:
-                              BorderRadius.zero, // Ensures sharp edges
+                                  BorderRadius.zero, // Ensures sharp edges
                             ),
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 16),
@@ -294,7 +308,7 @@ class _UpdateAwardState extends State<CreateAward> {
                                 shape: BoxShape.rectangle,
                                 border: Border.all(
                                     color:
-                                    Colors.grey), // Fixed border property
+                                        Colors.grey), // Fixed border property
                               ),
                               child: Center(
                                 child: Text(
@@ -313,53 +327,54 @@ class _UpdateAwardState extends State<CreateAward> {
                   ),
 
                   SizedBox(height: 80),
-          Center(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                // Outer container for border effect
-                Container(
-                  width: 369,
-                  height: 51,
-                  decoration: BoxDecoration(
-                    color: Colors.black, // Outer border color
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                // Inner container with gradient background
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(color: const Color(0xff9cb4c6)),
-                    ),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffde2234),
-                        border: Border.all(color: const Color(0xff090909), width: 3),
-                      ),
-                      child: const Text(
-                        "CREATE",
-                        style: TextStyle(
-                          fontFamily: 'Jost',
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                  Center(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        // Outer container for border effect
+                        Container(
+                          width: 369,
+                          height: 51,
+                          decoration: BoxDecoration(
+                            color: Colors.black, // Outer border color
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
+                        // Inner container with gradient background
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Container(
+                            padding: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              border:
+                                  Border.all(color: const Color(0xff9cb4c6)),
+                            ),
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              decoration: BoxDecoration(
+                                color: const Color(0xffde2234),
+                                border: Border.all(
+                                    color: const Color(0xff090909), width: 3),
+                              ),
+                              child: const Text(
+                                "CREATE",
+                                style: TextStyle(
+                                  fontFamily: 'Jost',
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  ),
-                )
-
-              ],
-            ),
-          )
-          ],
+                  )
+                ],
               ),
             ),
             SizedBox(height: 100),
@@ -373,7 +388,8 @@ class _UpdateAwardState extends State<CreateAward> {
 class ProfileImageRow extends StatefulWidget {
   final int count;
   const ProfileImageRow({
-    super.key, required this.count,
+    super.key,
+    required this.count,
   });
 
   @override
@@ -387,9 +403,11 @@ class _ProfileImageRowState extends State<ProfileImageRow> {
   void initState() {
     super.initState();
     iconList = [];
-    iconList = List.generate(widget.count, (_) => ProfileWithRedCross(
-      onPressed: removeProfile,
-    ));
+    iconList = List.generate(
+        widget.count,
+        (_) => ProfileWithRedCross(
+              onPressed: removeProfile,
+            ));
   }
 
   void removeProfile() {
@@ -413,13 +431,9 @@ class _ProfileImageRowState extends State<ProfileImageRow> {
   }
 }
 
-
 class RedBar extends StatelessWidget {
   final String heading;
-  const RedBar({
-    super.key,
-    required this.heading
-  });
+  const RedBar({super.key, required this.heading});
 
   @override
   Widget build(BuildContext context) {
@@ -482,37 +496,46 @@ class PlusRed extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.zero, // Sharp corners
               ),
-              contentPadding: EdgeInsets.symmetric(
-                  horizontal: 12, vertical: 15),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             ),
           ),
         ),
 
         SizedBox(width: 5),
 
-        Container(
-          height: 54,
-          width: 56,
-          decoration: const BoxDecoration(
-            color: Color(0xffd51933),
-          ),
-          child: IconButton(
-            icon: const Icon(
+        InkWell(
+          onTap: () {
+            showDialog(
+              context: context,
+              barrierColor: Colors.black.withOpacity(1), // Dark background
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Colors.black,
+                  contentPadding: EdgeInsets.zero,
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 6),
+                  content: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.73,
+                    child: AddMembersDialog(),
+                  ),
+                );
+              },
+            );
+          },
+          child: Container(
+            height: 54,
+            width: 56,
+            decoration: const BoxDecoration(
+              color: Color(0xffd51933),
+            ),
+            child: const Icon(
               Icons.add,
               color: Colors.white,
               size: 36,
             ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const MatchPage();
-                },
-              );
-            },
           ),
-        )
-
+        ),
       ],
     );
   }

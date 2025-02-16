@@ -4,7 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ProfileWithRedCross extends StatefulWidget {
   final VoidCallback onPressed;
 
-  const ProfileWithRedCross({Key? key, required this.onPressed}) : super(key: key);
+  const ProfileWithRedCross({Key? key, required this.onPressed})
+      : super(key: key);
 
   @override
   State<ProfileWithRedCross> createState() => _ProfileWithRedCrossState();
@@ -20,7 +21,8 @@ class _ProfileWithRedCrossState extends State<ProfileWithRedCross>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 1), // 1 second duration for the fade-out effect
+      duration: const Duration(
+          seconds: 1), // 1 second duration for the fade-out effect
       vsync: this,
     );
     _opacityAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(

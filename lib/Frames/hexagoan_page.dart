@@ -34,39 +34,42 @@ class HexagonPage extends StatelessWidget {
                         width: 120,
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 80, vertical: 14),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 80, vertical: 14),
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/under_black.png'),
                             fit: BoxFit.contain, // adjust the fit as needed
                           ),
                         ),
-                        child: Text("AWARD NAME FULLLLLLL",
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        child: Text(
+                          "AWARD NAME FULLLLLLL",
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-
                       Container(
                         margin: EdgeInsets.only(top: 0),
-                        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 92),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 3, horizontal: 92),
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/under_white.png'),
                             fit: BoxFit.cover, // adjust the fit as needed
                           ),
                         ),
-                        child: Text("AWARD NAME FULLLLLLL",
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.black,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        child: Text(
+                          "AWARD NAME FULLLLLLL",
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.black,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ],
@@ -75,8 +78,8 @@ class HexagonPage extends StatelessWidget {
               ),
             ],
           ),
-
-        ),),
+        ),
+      ),
     );
   }
 }
